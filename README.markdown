@@ -41,3 +41,9 @@ after recompiled should comment the byte-recompile-directory in the config file
 
 * [bugfix1](https://github.com/auto-complete/auto-complete/issues/118)
 * [bugfix2](https://github.com/auto-complete/auto-complete/issues/222)
+
+## 关于git嵌套的问题
+
+如果clone下来的emacs插件内也有.git会造成一个蛋疼的问题，所以写了一个py
+script递归的删除plugins路径下的.git 已加入到deploy.sh，push的时候还是
+一样push么么哒

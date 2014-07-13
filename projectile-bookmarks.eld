@@ -1,1 +1,1 @@
-("~/Documents/rbWorkSpace/" "~/Documents/rbWorkSpace/tube/" "~/.emacs.d/" "~/.emacs.d/plugins/yasnippet/snippets/" "~/Documents/mynote/" "~/Documents/itsanguo/findjobfromfreshstart/" "~/Documents/cljWorkspace/datanalyse/" "~/Documents/gitcafeproj/zjh/" "~/Documents/gitcafeproj/")
+("~/.emacs.d/" "~/Documents/rbWorkSpace/" "~/Documents/rbWorkSpace/tube/" "~/.emacs.d/plugins/yasnippet/snippets/" "~/Documents/mynote/" "~/Documents/itsanguo/findjobfromfreshstart/" "~/Documents/cljWorkspace/datanalyse/" "~/Documents/gitcafeproj/zjh/" "~/Documents/gitcafeproj/")
