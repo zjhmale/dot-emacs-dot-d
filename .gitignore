@@ -1,0 +1,12 @@
+*~*
+*#*
+*-history
+.smex-items
+places
+*.swp
+.*.swp
+.DS_Store
+/autopair/.git/
+/evil/.git/
+/paredit/.git/
+/themes/desert-theme/.git/

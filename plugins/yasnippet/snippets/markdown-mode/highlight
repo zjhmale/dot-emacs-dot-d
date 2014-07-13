@@ -1,0 +1,9 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: highlight
+# key: hl
+# binding: direct-keybinding
+# --
+{% highlight ${1:lang} %}
+${2:code}
+{% endhighlight %}
+$0

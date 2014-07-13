@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: def function
+# key: df
+# --
+def ${1:name}(${2:argu})
+    $0
+end
