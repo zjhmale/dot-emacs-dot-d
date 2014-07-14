@@ -45,3 +45,5 @@ if __name__ == '__main__':
     print os.path.isdir(source)
     print os.path.isdir("./plugins/yasnippet/yasmate")
     delete(source)
+    source = "./themes/"
+    delete(source)

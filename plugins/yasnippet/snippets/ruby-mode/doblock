@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: doblock
+# key: do
+# binding: direct-keybinding
+# --
+do |${1:argu}|
+$0
+end

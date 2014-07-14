@@ -40,8 +40,11 @@
 ;; Uncomment this to increase font size
 ;; (set-face-attribute 'default nil :height 140)
 ;; (load-theme 'tomorrow-night-bright t)
-(add-to-list 'load-path "~/.emacs.d/themes/desert-theme/")
-(require 'desert-theme)
+;;(add-to-list 'load-path "~/.emacs.d/themes/desert-theme/")
+;;(require 'desert-theme)
+
+(add-to-list 'load-path "~/.emacs.d/themes/molokai-theme/")
+(require 'molokai-theme)
 
 ;; Flyspell often slows down editing so it's turned off
 (remove-hook 'text-mode-hook 'turn-on-flyspell)
@@ -186,11 +189,11 @@
                    '(("\\(=\\)" 
                       1 font-lock-warning-face prepend)))))
 
-(add-hook 'ruby-mode-hook
-      '(lambda () (font-lock-add-keywords 
-                   nil 
-                   '(("\\(@[a-zA-Z]+\\)" 
-                      1 font-lock-constant-face prepend)))))
+;;(add-hook 'ruby-mode-hook
+;;      '(lambda () (font-lock-add-keywords 
+;;                   nil 
+;;                   '(("\\(@[a-zA-Z]+\\)" 
+;;                      1 font-lock-constant-face prepend)))))
 
 ;;(add-hook 'ruby-mode-hook 'robe-mode)
 ;;(add-hook 'ruby-mode-hook 'yard-mode)
