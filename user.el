@@ -140,6 +140,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/neotree")
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
+(define-key neotree-mode-map (kbd "\C-g") 'neotree-refresh)
 
 ;;for auto complete
 (require 'auto-complete)
@@ -160,11 +161,39 @@
 ;;for ruby-mode
 (require 'ruby-mode)
 (setq ruby-deep-indent-paren nil)
-(setq ruby-indent-level 4)
+;;(setq ruby-indent-level 4)
 
 ;;fix can not tab complete in ansi-term mode
 (add-hook 'term-mode-hook (lambda()
         (setq yas-dont-activate t)))
+
+;;highlight the numbers which not part of a word
+;;(add-hook 'after-change-major-mode-hook
+;;      '(lambda () (font-lock-add-keywords 
+;;                   nil 
+;;                   '(("\\([0-9]+\\)" 
+;;                      1 font-lock-warning-face prepend)))))
+
+(add-hook 'ruby-mode-hook
+      '(lambda () (font-lock-add-keywords 
+                   nil 
+                   '(("\\(loop\\)" 
+                      1 font-lock-keyword-face prepend)))))
+
+(add-hook 'ruby-mode-hook
+      '(lambda () (font-lock-add-keywords 
+                   nil 
+                   '(("\\(=\\)" 
+                      1 font-lock-warning-face prepend)))))
+
+(add-hook 'ruby-mode-hook
+      '(lambda () (font-lock-add-keywords 
+                   nil 
+                   '(("\\(@[a-zA-Z]+\\)" 
+                      1 font-lock-constant-face prepend)))))
+
+;;(add-hook 'ruby-mode-hook 'robe-mode)
+;;(add-hook 'ruby-mode-hook 'yard-mode)
 
 ;; Save here instead of littering current directory with emacs backup files
 (setq backup-directory-alist `(("." . "~/.saves")))

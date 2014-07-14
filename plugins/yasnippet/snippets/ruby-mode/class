@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: class
+# key: class
+# binding: direct-keybinding
+# --
+class ${1:name}
+      def initialize(${2:args})
+          ${3:init}
+      end
+      $0
+end
