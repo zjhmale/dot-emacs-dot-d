@@ -171,23 +171,49 @@
         (setq yas-dont-activate t)))
 
 ;;highlight the numbers which not part of a word
+(eval-after-load "ruby-mode"
+    '(font-lock-add-keywords 'ruby-mode
+      '("\\(loop\\)")))
+
+(eval-after-load "ruby-mode"
+     '(font-lock-add-keywords 'ruby-mode
+       '(("\\(self\\)"
+          . font-lock-constant-face))))
+
+(eval-after-load "ruby-mode"
+    '(font-lock-add-keywords 'ruby-mode
+      '("\\(new\\)")))
+
+(eval-after-load "ruby-mode"
+    '(font-lock-add-keywords 'ruby-mode
+      '("\\(=[>]?\\)")))
+
+;;(eval-after-load "ruby-mode"
+;;    '(font-lock-add-keywords 'ruby-mode
+;;      '("[^a-zA-Z]\\([0-9]+\\)[^a-zA-Z]")))
+
+(eval-after-load "ruby-mode"
+     '(font-lock-add-keywords 'ruby-mode
+       '(("\\([0-9]+\\)"
+          . font-lock-constant-face))))
+
 ;;(add-hook 'after-change-major-mode-hook
 ;;      '(lambda () (font-lock-add-keywords 
 ;;                   nil 
 ;;                   '(("\\([0-9]+\\)" 
 ;;                      1 font-lock-warning-face prepend)))))
 
-(add-hook 'ruby-mode-hook
-      '(lambda () (font-lock-add-keywords 
-                   nil 
-                   '(("\\(loop\\)" 
-                      1 font-lock-keyword-face prepend)))))
+;;(add-hook 'ruby-mode-hook
+;;      '(lambda () (font-lock-add-keywords 
+;;                   nil 
+;;                   '(("\\(loop\\)" 
+;;                      1 font-lock-keyword-face prepend)))))
 
-(add-hook 'ruby-mode-hook
-      '(lambda () (font-lock-add-keywords 
-                   nil 
-                   '(("\\(=\\)" 
-                      1 font-lock-warning-face prepend)))))
+;;(add-hook 'ruby-mode-hook
+;;      '(lambda () (font-lock-add-keywords 
+;;                   nil 
+;;                   '(("\\(=\\)" 
+;;                      1 font-lock-warning-face prepend)))))
 
 ;;(add-hook 'ruby-mode-hook
 ;;      '(lambda () (font-lock-add-keywords 
