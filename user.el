@@ -43,8 +43,13 @@
 ;;(add-to-list 'load-path "~/.emacs.d/themes/desert-theme/")
 ;;(require 'desert-theme)
 
-(add-to-list 'load-path "~/.emacs.d/themes/molokai-theme/")
-(require 'molokai-theme)
+;;for molokai color theme
+;;(add-to-list 'load-path "~/.emacs.d/themes/molokai-theme/")
+;;(require 'molokai-theme)
+
+;;for zenburn-theme
+(add-to-list 'load-path "~/.emacs.d/plugins/zenburn-emacs/")
+(require 'zenburn-theme)
 
 ;; Flyspell often slows down editing so it's turned off
 (remove-hook 'text-mode-hook 'turn-on-flyspell)
@@ -74,8 +79,8 @@
 (global-linum-mode t)
 
 ;;transparent
-(set-frame-parameter (selected-frame) 'alpha '(80 80))
-(add-to-list 'default-frame-alist '(alpha 80 80))
+(set-frame-parameter (selected-frame) 'alpha '(93 93))
+(add-to-list 'default-frame-alist '(alpha 93 93))
 
 ;;to avoid the blink
 (setq visible-bell nil)
@@ -98,7 +103,7 @@
 (global-set-key (kbd "RET") 'newline-and-indent);;换行自动缩进
 
 ;;paredit
-;;(add-to-list 'load-path "~/.emacs.d/paredit/")
+(add-to-list 'load-path "~/.emacs.d/plugins/paredit/")
 (require 'paredit)
 (paredit-mode 1)
 ;;(define-key paredit-mode-map (kbd "C-S-<left>") 'paredit-backward-slurp-sexp)

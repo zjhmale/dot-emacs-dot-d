@@ -40,6 +40,14 @@ def delete(source):
             #            #os.removedirs(source + dir + '/' + str(file))
             #            shutil.rmtree(source + dir + '/' + str(file))
 
+# delete the temp file generate by emacs
+def deleteTempFile(source):
+    dirs = os.listdir(source)
+    for dir in dirs:
+        if str(dir)[0] == "#":
+            print source + dir
+            os.remove(source + dir)
+
 if __name__ == '__main__':
     source = "./plugins/"
     print os.path.isdir(source)
@@ -47,3 +55,4 @@ if __name__ == '__main__':
     delete(source)
     source = "./themes/"
     delete(source)
+    deleteTempFile("./")

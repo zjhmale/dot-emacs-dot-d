@@ -1,1 +1,0 @@
-("~/Documents/rbWorkSpace/cleantha/" "~/Documents/rbWorkSpace/" "~/Documents/gitcafeproj/zjh/" "~/.emacs.d/" "~/Documents/cljWorkspace/datanalyse/" "~/Documents/rbWorkSpace/tube/" "~/.emacs.d/plugins/yasnippet/snippets/" "~/Documents/mynote/" "~/Documents/itsanguo/findjobfromfreshstart/" "~/Documents/gitcafeproj/")
