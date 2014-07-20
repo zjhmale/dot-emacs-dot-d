@@ -39,7 +39,7 @@
 (add-to-list 'load-path "~/.emacs.d/themes")
 ;; Uncomment this to increase font size
 ;; (set-face-attribute 'default nil :height 140)
-;; (load-theme 'tomorrow-night-bright t)
+(load-theme 'tomorrow-night-bright t)
 ;;(add-to-list 'load-path "~/.emacs.d/themes/desert-theme/")
 ;;(require 'desert-theme)
 
@@ -48,8 +48,8 @@
 ;;(require 'molokai-theme)
 
 ;;for zenburn-theme
-(add-to-list 'load-path "~/.emacs.d/plugins/zenburn-emacs/")
-(require 'zenburn-theme)
+;;(add-to-list 'load-path "~/.emacs.d/plugins/zenburn-emacs/")
+;;(require 'zenburn-theme)
 
 ;; Flyspell often slows down editing so it's turned off
 (remove-hook 'text-mode-hook 'turn-on-flyspell)
@@ -78,9 +78,13 @@
 ;;show line number
 (global-linum-mode t)
 
+;;for highlight current line number
+(require 'hlinum)
+(hlinum-activate)
+
 ;;transparent
-(set-frame-parameter (selected-frame) 'alpha '(93 93))
-(add-to-list 'default-frame-alist '(alpha 93 93))
+(set-frame-parameter (selected-frame) 'alpha '(80 80))
+(add-to-list 'default-frame-alist '(alpha 80 80))
 
 ;;to avoid the blink
 (setq visible-bell nil)
@@ -202,32 +206,16 @@
        '(("\\([0-9]+\\)"
           . font-lock-constant-face))))
 
-;;(add-hook 'after-change-major-mode-hook
-;;      '(lambda () (font-lock-add-keywords 
-;;                   nil 
-;;                   '(("\\([0-9]+\\)" 
-;;                      1 font-lock-warning-face prepend)))))
+;;for fenghighlight plugin
+;;can check the source code to use M-r M-p M-n
+(add-to-list 'load-path "~/.emacs.d/plugins/shenfeng")
+(require 'feng-highlight)
+(global-set-key (kbd "M-i") 'feng-highlight-at-point)
 
-;;(add-hook 'ruby-mode-hook
-;;      '(lambda () (font-lock-add-keywords 
-;;                   nil 
-;;                   '(("\\(loop\\)" 
-;;                      1 font-lock-keyword-face prepend)))))
-
-;;(add-hook 'ruby-mode-hook
-;;      '(lambda () (font-lock-add-keywords 
-;;                   nil 
-;;                   '(("\\(=\\)" 
-;;                      1 font-lock-warning-face prepend)))))
-
-;;(add-hook 'ruby-mode-hook
-;;      '(lambda () (font-lock-add-keywords 
-;;                   nil 
-;;                   '(("\\(@[a-zA-Z]+\\)" 
-;;                      1 font-lock-constant-face prepend)))))
-
-;;(add-hook 'ruby-mode-hook 'robe-mode)
-;;(add-hook 'ruby-mode-hook 'yard-mode)
+;;for clojure snippets
+(when (require 'yasnippet nil 'noerror)
+  (progn
+    (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")))
 
 ;; Save here instead of littering current directory with emacs backup files
 (setq backup-directory-alist `(("." . "~/.saves")))
