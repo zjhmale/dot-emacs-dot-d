@@ -39,7 +39,8 @@
 (add-to-list 'load-path "~/.emacs.d/themes")
 ;; Uncomment this to increase font size
 ;; (set-face-attribute 'default nil :height 140)
-(load-theme 'tomorrow-night-bright t)
+;;(load-theme 'tomorrow-night-bright t)
+(require 'zenburn-theme)
 ;;(add-to-list 'load-path "~/.emacs.d/themes/desert-theme/")
 ;;(require 'desert-theme)
 
@@ -80,11 +81,11 @@
 
 ;;for highlight current line number
 (require 'hlinum)
-(hlinum-activate)
+;;(hlinum-activate)
 
 ;;transparent
-(set-frame-parameter (selected-frame) 'alpha '(80 80))
-(add-to-list 'default-frame-alist '(alpha 80 80))
+(set-frame-parameter (selected-frame) 'alpha '(90 90))
+(add-to-list 'default-frame-alist '(alpha 90 90))
 
 ;;to avoid the blink
 (setq visible-bell nil)
@@ -161,6 +162,8 @@
 (ac-config-default)
 (ac-set-trigger-key "TAB")
 (ac-set-trigger-key "<tab>")
+(setq ac-auto-start 1)
+(setq ac-quick-help-delay 0.05)
 
 ;;ruby-electric
 (ruby-electric-mode 1)
@@ -206,6 +209,11 @@
        '(("\\([0-9]+\\)"
           . font-lock-constant-face))))
 
+(eval-after-load "clojure-mode"
+     '(font-lock-add-keywords 'clojure-mode
+       '(("\\([0-9]+\\)"
+          . font-lock-string-face))))
+
 ;;for fenghighlight plugin
 ;;can check the source code to use M-r M-p M-n
 (add-to-list 'load-path "~/.emacs.d/plugins/shenfeng")
@@ -216,6 +224,25 @@
 (when (require 'yasnippet nil 'noerror)
   (progn
     (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")))
+
+;;to refresh the namespace when start cider-nrepl
+;;type M-x cider-namespace-refresh to refresh current namespace when you use require use or refer other namespace
+(defun cider-namespace-refresh ()
+  (interactive)
+  (cider-interactive-eval
+   "(require 'clojure.tools.namespace.repl)
+    (clojure.tools.namespace.repl/refresh)"))
+
+
+;;for poweline it's awesome and inspired by vim
+(add-to-list 'load-path "~/.emacs.d/plugins/emacs-powerline")
+(require 'powerline)
+(require 'cl)
+(custom-set-faces
+ '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
+ '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
+(setq powerline-color1 "grey22")
+(setq powerline-color2 "grey40")
 
 ;; Save here instead of littering current directory with emacs backup files
 (setq backup-directory-alist `(("." . "~/.saves")))
