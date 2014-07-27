@@ -129,6 +129,7 @@
 ;;projectile config
 (projectile-global-mode)
 (setq projectile-completion-system 'grizzl)
+(setq projectile-enable-caching t)
 
 ;;disable autosave to avoid temp file
 (setq auto-save-default nil)
@@ -148,6 +149,13 @@
    (define-key markdown-mode-map (kbd "<tab>") nil))
  (add-hook 'markdown-mode-hook 'markdown-unset-tab)
 (global-set-key (kbd "C-;") 'yas/expand)
+
+;;for helm
+;;(add-to-list 'load-path "~/.emacs.d/plugins/helm")
+(require 'helm-config)
+(helm-mode t)
+;;this is good file navigation for large project it's awesome
+(global-set-key (kbd "C-c ,,") 'helm-projectile)
 
 ;;for neotree
 (add-to-list 'load-path "~/.emacs.d/plugins/neotree")
@@ -204,14 +212,29 @@
 ;;    '(font-lock-add-keywords 'ruby-mode
 ;;      '("[^a-zA-Z]\\([0-9]+\\)[^a-zA-Z]")))
 
+;;(eval-after-load "ruby-mode"
+;;     '(font-lock-add-keywords 'ruby-mode
+;;       '(("\\([0-9]+\\)"
+;;          . font-lock-constant-face))))
+
+;;(eval-after-load "ruby-mode"
+;;     '(font-lock-add-keywords 'ruby-mode
+;;       '(("[^a-zA-Z]\\([0-9]+\\)[^a-zA-Z]"
+;;          . font-lock-constant-face))))
+
+;;(eval-after-load "ruby-mode"
+;;     '(font-lock-add-keywords 'ruby-mode
+;;       '(("[^a-zA-Z]\\([0-9]+\\)[^a-zA-Z]\\|[^a-zA-Z]\\([0-9]+\\)\\|\\([0-9]+\\)[^a-zA-Z]"
+;;          . font-lock-constant-face))))
+
 (eval-after-load "ruby-mode"
      '(font-lock-add-keywords 'ruby-mode
-       '(("\\([0-9]+\\)"
+       '(("\\_<[0-9]+\\_>"
           . font-lock-constant-face))))
 
 (eval-after-load "clojure-mode"
      '(font-lock-add-keywords 'clojure-mode
-       '(("\\([0-9]+\\)"
+       '(("\\_<[0-9]+\\_>"
           . font-lock-string-face))))
 
 ;;for fenghighlight plugin
