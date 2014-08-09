@@ -47,3 +47,30 @@ after recompiled should comment the byte-recompile-directory in the config file
 如果clone下来的emacs插件内也有.git会造成一个蛋疼的问题，所以写了一个py
 script递归的删除plugins路径下的.git 已加入到deploy.sh，push的时候还是
 一样push么么哒
+
+## usage
+
+* C-x C-f find file
+* C-c ,, navigate file in a project (_use helm-projectile for large scale project_)
+* C-x C-c quit
+* M-x cider-namespace-refresh refresh a clojure namespace
+* M-x cider-jack-in start a clojure repl
+* C-x 2 open a horizen tab window
+* C-x 3 open a verical tab window
+* C-s find string use regex
+* M-x cider-restart to restart refresh a clojure project
+* C-c C-k compile and reload a clojure file after cider-jack-in
+* fn-F8 open the neotree
+* C-c C-c create new file in neotree tab
+* C-c p f navigate file in a project (_use projectile and slow in large scale project_)
+* C-x f navigate file in a project slow and ugly
+* evil-mode help me a lot to handle the edit stuff that a used to vim operations
+* C-M f 从括号头跳转到对应的括号尾
+* C-M b 从括号尾跳转到对应的括号头
+* 沈峰写的那个高亮相同东西的插件可以看user.el中的注释
+* C-l 将当前光标所在的行置为正中央
+* M-. 跳转到定义处
+* M-, 跳转到实现处
+* C-shift-s+左右方向键 利用paredit来对括号进行移动
+* C-shift+左右方向键 the same as above
+* C-@ 选中要加上列的范围 C-x r t输入要加入列的内容(_insert column_)

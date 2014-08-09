@@ -64,7 +64,7 @@
 (setq ido-use-filename-at-point nil)
 
 ;;window size
-(setq initial-frame-alist '((top . 0) (left . 0) (width . 126) (height . 34)))
+;;(setq initial-frame-alist '((top . 0) (left . 0) (width . 126) (height . 34)))
 ;;font
 (set-default-font "Monaco 17")
 
@@ -90,13 +90,18 @@
 ;;to avoid the blink
 (setq visible-bell nil)
 
+;;(show-paren-mode 1) ;; 匹配括号高亮
+;;(set-face-bold-p 'show-paren-match t) ;;加粗显示匹配括号
+;;括号匹配颜色
+(set-face-foreground 'show-paren-match "#004242")
+(set-face-background 'show-paren-match "#B0B7B0")
+
 ;;for rainbow-delimiters
 (require 'rainbow-delimiters)
 (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 (global-rainbow-delimiters-mode)
 
 ;;autopair in common files
-;;(show-paren-mode 1) ;; 匹配括号高亮
 (add-to-list 'load-path "~/.emacs.d/plugins/autopair/")
 (require 'autopair)
 (autopair-global-mode) ;; enable autopair in all buffers
@@ -229,12 +234,12 @@
 
 (eval-after-load "ruby-mode"
      '(font-lock-add-keywords 'ruby-mode
-       '(("\\_<[0-9]+\\_>"
+       '(("\\_<[0-9\\.]+\\_>"
           . font-lock-constant-face))))
 
 (eval-after-load "clojure-mode"
      '(font-lock-add-keywords 'clojure-mode
-       '(("\\_<[0-9]+\\_>"
+       '(("\\_<[0-9\\.]+\\_>"
           . font-lock-string-face))))
 
 ;;for fenghighlight plugin
@@ -247,6 +252,12 @@
 (when (require 'yasnippet nil 'noerror)
   (progn
     (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")))
+
+;;for maxframe this el will maxsize the emacs window but not
+;;fullscreen it 
+(add-to-list 'load-path "~/.emacs.d/plugins/maxframe.el")
+(require 'maxframe)
+(add-hook 'window-setup-hook 'maximize-frame t)
 
 ;;to refresh the namespace when start cider-nrepl
 ;;type M-x cider-namespace-refresh to refresh current namespace when you use require use or refer other namespace
@@ -266,6 +277,19 @@
  '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
 (setq powerline-color1 "grey22")
 (setq powerline-color2 "grey40")
+
+;;for scala-mode
+(require 'scala-mode2)
+
+;;for ensime
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+;;for sbt mode
+(require 'sbt-mode)
+
+;;for highlight the match parentheses
+;;(require 'highlight-parentheses)
 
 ;; Save here instead of littering current directory with emacs backup files
 (setq backup-directory-alist `(("." . "~/.saves")))
