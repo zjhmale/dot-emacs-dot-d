@@ -1,0 +1,2 @@
+ls
+ghci -o clea clea.hs

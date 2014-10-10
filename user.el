@@ -39,8 +39,9 @@
 (add-to-list 'load-path "~/.emacs.d/themes")
 ;; Uncomment this to increase font size
 ;; (set-face-attribute 'default nil :height 140)
-;;(load-theme 'tomorrow-night-bright t)
-(require 'zenburn-theme)
+(load-theme 'tomorrow-night-bright t)
+;;(load-theme 'wilson t)
+;; (require 'zenburn-theme)
 ;;(add-to-list 'load-path "~/.emacs.d/themes/desert-theme/")
 ;;(require 'desert-theme)
 
@@ -51,6 +52,8 @@
 ;;for zenburn-theme
 ;;(add-to-list 'load-path "~/.emacs.d/plugins/zenburn-emacs/")
 ;;(require 'zenburn-theme)
+;;(load-theme 'monokai t)
+;;(require 'emacs-color-themes)
 
 ;; Flyspell often slows down editing so it's turned off
 (remove-hook 'text-mode-hook 'turn-on-flyspell)
@@ -66,7 +69,7 @@
 ;;window size
 ;;(setq initial-frame-alist '((top . 0) (left . 0) (width . 126) (height . 34)))
 ;;font
-(set-default-font "Monaco 17")
+(set-default-font "Monaco 18")
 
 ;;for vim mode
 (add-to-list 'load-path "~/.emacs.d/plugins/evil/")
@@ -74,6 +77,7 @@
 (evil-mode 1)
 
 ;;set scheme env path
+;;M-x run-scheme
 (setq scheme-program-name "/usr/local/bin/mit-scheme")
 
 ;;show line number
@@ -84,8 +88,8 @@
 ;;(hlinum-activate)
 
 ;;transparent
-(set-frame-parameter (selected-frame) 'alpha '(90 90))
-(add-to-list 'default-frame-alist '(alpha 90 90))
+(set-frame-parameter (selected-frame) 'alpha '(75 75))
+(add-to-list 'default-frame-alist '(alpha 75 75))
 
 ;;to avoid the blink
 (setq visible-bell nil)
@@ -242,6 +246,11 @@
        '(("\\_<[0-9\\.]+\\_>"
           . font-lock-string-face))))
 
+;;(eval-after-load "clojure-mode"
+;;     '(font-lock-add-keywords 'clojure-mode
+;;       '(("\\(println\\|update-in\\|stc\\|apply\\|send\\|atom\\)"
+;;          . font-lock-function-name-face))))
+
 ;;for fenghighlight plugin
 ;;can check the source code to use M-r M-p M-n
 (add-to-list 'load-path "~/.emacs.d/plugins/shenfeng")
@@ -275,8 +284,21 @@
 (custom-set-faces
  '(mode-line ((t (:foreground "#030303" :background "#bdbdbd" :box nil))))
  '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#666666" :box nil)))))
-(setq powerline-color1 "grey22")
-(setq powerline-color2 "grey40")
+;;(setq powerline-color1 "grey22")
+;;(setq powerline-color2 "grey40")
+(setq powerline-color1 "#3ded1a")
+(setq powerline-color2 "#0ad3f2")
+
+;;for haskell development just write a tiny scheme called cleantha
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+;; hslint on the command line only likes this indentation mode;
+;; alternatives commented out below.
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+;; Ignore compiled Haskell files in filename completions
+(add-to-list 'completion-ignored-extensions ".hi")
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
 ;;for scala-mode
 (require 'scala-mode2)
@@ -291,5 +313,91 @@
 ;;for highlight the match parentheses
 ;;(require 'highlight-parentheses)
 
+;;(set-default 'truncate-lines t)
+;;(global-visual-line-mode 1)
+;;(auto-fill-mode 0)
+;;为了避免很长的代码在敲了回车之后变成两行，所以加上最大下面这句一句代码超过300列的长度再自动换行
+(setq default-fill-column 300)
+
+;;for emmet
+(require 'emmet-mode)
+;;(emmet-mode t)
+;;enable emmet-mode just M-x emmet-mode
+;;C-j emmet-preview
+(global-set-key (kbd "C-c j") 'emmet-expand-yas)
+
+;;M-x blank-mode to toggle to show white space in source files
+
+;;common clojure usage
+;;M-e eval the clojure code
+;;M-x clojure-namespace-refresh
+;;C-c C-k reload and compile the clojure code a cider powered function
+;;M-x cider-jack-in
+
+;;for ocp-indent for ocaml
+(add-to-list 'load-path "/Users/zjh/.opam/system/share/emacs/site-lisp")
+(require 'ocp-indent)
+
+;;for comment ocaml code or other language
+;;M-x comment-region
+;;or just use M-; referenced by this link https://www.gnu.org/software/emacs/manual/html_node/emacs/Comment-Commands.html
+(global-set-key (kbd "C-x C-;") 'comment-region)
+
+;;for uncomment ocaml code or other language
+;;C-u M-x comment-region
+
+;;to indent the ocaml code
+(global-set-key (kbd "C-x C-i") 'ocp-indent-line)
+
+;; Indent `=' like a standard keyword.
+(setq tuareg-lazy-= t)
+;; Indent [({ like standard keywords.
+(setq tuareg-lazy-paren t)
+;; No indentation after `in' keywords.
+(setq tuareg-in-indent 4)
+
+(add-hook 'tuareg-mode-hook
+          ;; Turn on auto-fill minor mode.
+          (lambda () (auto-fill-mode 1)))
+
+(add-hook 'tuareg-mode-hook
+          (function (lambda ()
+                      ;;(setq tuareg-in-indent 0)
+                      ;;(setq tuareg-let-always-indent t)
+                      ;;(setq tuareg-let-indent tuareg-default-indent)
+                      ;;(setq tuareg-with-indent 0)
+                      ;;(setq tuareg-function-indent 0)
+                      ;;(setq tuareg-fun-indent 0)
+                      ;;(setq tuareg-parser-indent 0)
+                      ;;(setq tuareg-match-indent 0)
+                      ;;(setq tuareg-begin-indent tuareg-default-indent)
+                      ;;(setq tuareg-parse-indent tuareg-default-indent); .mll
+                      ;;(setq tuareg-rule-indent  tuareg-default-indent)
+                      ;;(setq tuareg-font-lock-symbols nil)
+                      (setq tuareg-begin-indent 4)
+                      (setq tuareg-class-indent 4)
+                      (setq tuareg-default-indent 4)
+                      (setq tuareg-do-indent 4)
+                      (setq tuareg-for-while-indent 4)
+                      (setq tuareg-fun-indent 4)
+                      (setq tuareg-if-then-else-indent 4)
+                      (setq tuareg-let-indent 4)
+                      (setq tuareg-match-indent 4)
+                      (setq tuareg-method-indent 4)
+                      (setq tuareg-pipe-extra-unindent 4)
+                      (setq tuareg-sig-struct-indent 4)
+                      (setq tuareg-try-indent 4)
+                      (setq tuareg-val-indent 4))))
+
+;;when to create a ocaml list like [1;2;3] should turn off the paredit-mode cause ; will trigger a new line in paredit-mode
+
+;;for format the ocaml code
+;;reference the tuareg cheat sheet http://www.typerex.org/files/cheatsheets/tuareg-mode.pdf
+;;C-c C-q or M-x tuareg-indent-phrase
+;;C-M-\ or M-x indent-region
+
 ;; Save here instead of littering current directory with emacs backup files
 (setq backup-directory-alist `(("." . "~/.saves")))
+;;(load-file "/Users/zjh/.opam/system/share/typerex/ocp-indent/ocp-indent.el")
+
+;;for chinese comment reference this configuration http://stackoverflow.com/questions/16162583/tomorrow-theme-for-emacs-shows-chinese-charaters-as-blocks
