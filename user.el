@@ -39,11 +39,13 @@
 (add-to-list 'load-path "~/.emacs.d/themes")
 ;; Uncomment this to increase font size
 ;; (set-face-attribute 'default nil :height 140)
-(load-theme 'tomorrow-night-bright t)
+;; (load-theme 'tomorrow-night-bright t)
 ;;(load-theme 'wilson t)
 ;; (require 'zenburn-theme)
 ;;(add-to-list 'load-path "~/.emacs.d/themes/desert-theme/")
 ;;(require 'desert-theme)
+(add-to-list 'load-path "~/.emacs.d/themes/zenburn-emacs/")
+(require 'zenburn-theme)
 
 ;;for molokai color theme
 ;;(add-to-list 'load-path "~/.emacs.d/themes/molokai-theme/")
