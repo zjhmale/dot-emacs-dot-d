@@ -79,7 +79,9 @@
 (evil-mode 1)
 
 ;;set scheme env path
+;;for now i installed the geiser to run racket so if want to use run-scheme should M-x geiser-mode to disable the geiser-mode first
 ;;M-x run-scheme
+;;C-c C-k to reload and compile the scheme and racket code
 (setq scheme-program-name "/usr/local/bin/mit-scheme")
 
 ;;show line number
@@ -301,6 +303,7 @@
 ;; Ignore compiled Haskell files in filename completions
 (add-to-list 'completion-ignored-extensions ".hi")
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+;;to run haskell in emacs just use M-x haskell-interactive-mode or just use the combination C-c C-l
 
 ;;for scala-mode
 (require 'scala-mode2)
@@ -397,6 +400,22 @@
 ;;reference the tuareg cheat sheet http://www.typerex.org/files/cheatsheets/tuareg-mode.pdf
 ;;C-c C-q or M-x tuareg-indent-phrase
 ;;C-M-\ or M-x indent-region
+
+;; Indenting module body code at column 0
+(defun scheme-module-indent (state indent-point normal-indent) 0)
+(put 'module 'scheme-indent-function 'scheme-module-indent)
+
+(put 'and-let* 'scheme-indent-function 1)
+(put 'parameterize 'scheme-indent-function 1)
+(put 'handle-exceptions 'scheme-indent-function 1)
+(put 'when 'scheme-indent-function 1)
+(put 'unless 'scheme-indent-function 1)
+(put 'match 'scheme-indent-function 1)
+
+(add-to-list 'load-path "~/.emacs.d/plugins/simple-sexp")
+(require 'simple-sexp)
+
+(put 'myfunc 'lisp-indent-function 0)
 
 ;; Save here instead of littering current directory with emacs backup files
 (setq backup-directory-alist `(("." . "~/.saves")))
