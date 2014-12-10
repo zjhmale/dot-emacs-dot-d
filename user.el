@@ -78,6 +78,13 @@
 (require 'evil)
 (evil-mode 1)
 
+;;for tabbar
+(add-to-list 'load-path "~/.emacs.d/plugins/tabbar/")
+(require 'tabbar)
+(tabbar-mode 1)
+(global-set-key [(meta j)] 'tabbar-backward)
+(global-set-key [(meta k)] 'tabbar-forward)
+
 ;;set scheme env path
 ;;for now i installed the geiser to run racket so if want to use run-scheme should M-x geiser-mode to disable the geiser-mode first
 ;;M-x run-scheme
@@ -92,8 +99,8 @@
 ;;(hlinum-activate)
 
 ;;transparent
-(set-frame-parameter (selected-frame) 'alpha '(75 75))
-(add-to-list 'default-frame-alist '(alpha 75 75))
+(set-frame-parameter (selected-frame) 'alpha '(85 85))
+(add-to-list 'default-frame-alist '(alpha 85 85))
 
 ;;to avoid the blink
 (setq visible-bell nil)
