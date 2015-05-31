@@ -192,6 +192,8 @@
 (ac-set-trigger-key "<tab>")
 (setq ac-auto-start 1)
 (setq ac-quick-help-delay 0.05)
+(setq ac-auto-show-menu 0)
+(setq ac-auto-start 1)
 
 ;;ruby-electric
 (ruby-electric-mode 1)
