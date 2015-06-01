@@ -79,3 +79,4 @@ script递归的删除plugins路径下的.git 已加入到deploy.sh，push的时�
 * M-j M-k用来切换tabbar上的tab
 * C-x C-- / C-x C-+ 缩小 / 放大
 * C-g C-_ redo
+* C-c M-j / M-x cider-jack-in -> start `cider-jack-in`
