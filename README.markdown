@@ -73,7 +73,7 @@ script递归的删除plugins路径下的.git 已加入到deploy.sh，push的时�
 * M-, 跳转到实现处
 * C-shift-s+左右方向键 利用paredit来对括号进行移动
 * C-shift+左右方向键 the same as above
-* C-@ 选中要加上列的范围 C-x r t输入要加入列的内容(_insert column_)
+* C-@ 选中要加上列的范围 C-x r t输入要加入列的内容(_insert mode in evil_)
 * shift+上下左右可以切换分割的屏幕
 * shift+括号可以跳转到当前最外层的括号位置
 * M-j M-k用来切换tabbar上的tab
@@ -85,3 +85,5 @@ script递归的删除plugins路径下的.git 已加入到deploy.sh，push的时�
 * M-x run-ocaml just start the ocaml env (_can choose ocaml or utop usually utop is better_) and C-x C-e to evaluate ocaml code
 * C-x C-; to comment ocaml code
 * C-x C-i to indent ocaml code
+* C-x k kill buffer
+* C-x b change buffer
