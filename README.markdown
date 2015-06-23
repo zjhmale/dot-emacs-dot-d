@@ -67,7 +67,7 @@ script递归的删除plugins路径下的.git 已加入到deploy.sh，push的时�
 * evil-mode help me a lot to handle the edit stuff that a used to vim operations
 * C-M f 从括号头跳转到对应的括号尾
 * C-M b 从括号尾跳转到对应的括号头
-* 沈峰写的那个高亮相同东西的插件可以看user.el中的注释
+* shenfeng写的那个高亮相同东西的插件可以看user.el中的注释
 * C-l 将当前光标所在的行置为正中央
 * M-. 跳转到定义处
 * M-, 跳转到实现处
@@ -80,3 +80,8 @@ script递归的删除plugins路径下的.git 已加入到deploy.sh，push的时�
 * C-x C-- / C-x C-+ 缩小 / 放大
 * C-g C-_ redo
 * C-c M-j / M-x cider-jack-in -> start `cider-jack-in`
+* C-c C-l sync file in namespace in clojure project (check cider readme out)
+* C-c C-l start interactive ghc in haskell project
+* M-x run-ocaml just start the ocaml env (_can choose ocaml or utop usually utop is better_) and C-x C-e to evaluate ocaml code
+* C-x C-; to comment ocaml code
+* C-x C-i to indent ocaml code
