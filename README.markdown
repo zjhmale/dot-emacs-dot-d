@@ -80,7 +80,7 @@ script递归的删除plugins路径下的.git 已加入到deploy.sh，push的时�
 * C-x C-- / C-x C-+ 缩小 / 放大
 * C-g C-_ redo
 * C-c M-j / M-x cider-jack-in -> start `cider-jack-in`
-* C-c C-k sync file in namespace in clojure project (for more detail just check cider readme out)
+* C-c C-l / C-c C-k sync file in namespace in clojure project (for more detail just check cider readme out)
 * C-c C-l start interactive ghc in haskell project
 * M-x run-ocaml just start the ocaml env (_can choose ocaml or utop usually utop is better_) and C-x C-e to evaluate ocaml code
 * C-x C-; to comment ocaml code
