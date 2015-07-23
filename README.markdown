@@ -64,3 +64,4 @@ script递归的删除plugins路径下的.git 已加入到deploy.sh，push的时�
 * C-x C-i to indent ocaml code
 * C-x k kill buffer
 * C-x b change buffer
+* M-p M-P 用来翻阅各种语言repl或者console(比如utop,interactive-haskell,cider-jack-in等等)中的上一条和下一条代码
