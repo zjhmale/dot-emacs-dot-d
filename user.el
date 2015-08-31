@@ -431,3 +431,12 @@
 ;;(load-file "/Users/zjh/.opam/system/share/typerex/ocp-indent/ocp-indent.el")
 
 ;;for chinese comment reference this configuration http://stackoverflow.com/questions/16162583/tomorrow-theme-for-emacs-shows-chinese-charaters-as-blocks
+
+;;for coq
+(add-to-list 'load-path "/usr/local/Cellar/coq/8.4pl6_1/lib/emacs/site-lisp")
+(setq coq-prog-name "/usr/local/bin/coqtop")
+(setq auto-mode-alist (cons '("\\.v$" . coq-mode) auto-mode-alist))
+(autoload 'coq-mode "coq" "Major mode for editing Coq vernacular." t)
+(load-file "/usr/local/share/emacs/site-lisp/proof-general/generic/proof-site.el")
+(load-file "/usr/local/Cellar/ssreflect/1.5/share/ssreflect/pg-ssr.el")
+;;(load-file "/usr/local/Cellar/proof-general/4.2/share/emacs/site-lisp/proof-general/generic/proof-site.el")
