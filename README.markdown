@@ -66,3 +66,8 @@ script递归的删除plugins路径下的.git 已加入到deploy.sh，push的时�
 * C-x b change buffer
 * M-p M-P 用来翻阅各种语言repl或者console(比如utop,interactive-haskell,cider-jack-in等等)中的上一条和下一条代码
 * C-c C-n 用来执行coq中的定义之类的
+* C-c C-= inserts an = sign and lines up type signatures and other pattern matches nicely.
+* C-c C-| inserts a guard
+* C-c C-o inserts a guard | otherwise = and lines up existing guards
+* C-c C-w inserts a where keyword
+* C-c C-. aligns code over a region in a "sensible" fashion.
