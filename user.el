@@ -71,7 +71,7 @@
 ;;window size
 ;;(setq initial-frame-alist '((top . 0) (left . 0) (width . 126) (height . 34)))
 ;;font
-(set-default-font "Monaco 18")
+(set-default-font "Monaco 16")
 
 ;;for vim mode
 (add-to-list 'load-path "~/.emacs.d/plugins/evil/")
