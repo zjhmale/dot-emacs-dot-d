@@ -246,8 +246,8 @@ It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
   ;; transparency
-  (set-frame-parameter (selected-frame) 'alpha '(55 55))
-  (add-to-list 'default-frame-alist '(alpha 55 55))
+  (set-frame-parameter (selected-frame) 'alpha '(75 75))
+  (add-to-list 'default-frame-alist '(alpha 75 75))
 
   ;; C-x C-e and utop -emacs to run ocaml repl and do not end with ;; each line
   ;; https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Blang/ocaml
@@ -300,6 +300,12 @@ in `dotspacemacs/user-config'."
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (global-set-key (kbd "C-c ,,") 'helm-projectile)
+
+  ;; ocaml shortcuts
+  (require 'ocp-indent)
+  (global-set-key (kbd "C-x C-;") 'comment-indent)
+  (global-set-key (kbd "C-x C-,") 'comment-region)
+  (global-set-key (kbd "C-x C-i") 'ocp-indent-line)
 
   ;;for auto complete
   (global-auto-complete-mode t)
