@@ -1,25 +1,4 @@
-## some note
-
-clone this repo as ~/.emacs.d path
-
-* in command line
-
-```
-find ~/.emacs.d/elpa -name \*.elc -exec rm -rf {} \;
-```
-
-* in ~/.emacs file or ~/.emacs.d/user.el
-
-```
-(byte-recompile-directory (expand-file-name "~/.emacs.d/elpa") 0 t)
-```
-
-after recompiled should comment the byte-recompile-directory in the config file
-
-* [bugfix1](https://github.com/auto-complete/auto-complete/issues/118)
-* [bugfix2](https://github.com/auto-complete/auto-complete/issues/222)
-
-## usage
+## Shortcuts
 
 * C-x C-f find file
 * C-c ,, navigate file in a project (_use helm-projectile for large scale project_)

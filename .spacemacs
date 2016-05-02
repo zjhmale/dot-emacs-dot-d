@@ -42,6 +42,8 @@ values."
      ocaml
      agda
      idris
+     coq
+     latex
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -70,7 +72,7 @@ values."
    ;; This variable has no effect if Emacs is launched with the parameter
    ;; `--insecure' which forces the value of this variable to nil.
    ;; (default t)
-   dotspacemacs-elpa-https t
+   dotspacemacs-elpa-https nil
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    dotspacemacs-elpa-timeout 5
    ;; If non nil then spacemacs will check for updates at startup
@@ -268,7 +270,11 @@ in `dotspacemacs/user-config'."
                (shell-command-to-string "agda-mode locate")))
 
   ;; rainbow identifier
-  ;; (add-hook 'prog-mode-hook 'rainbow-identifiers-mode)
+  (add-hook 'coq-mode-hook 'rainbow-identifiers-mode)
+
+  ;; bind expand region shortcuts
+  (global-set-key [(meta up)] 'er/expand-region)
+  (global-set-key [(meta down)] 'er/contract-region)
 
   ;; align agda code
   (require 'align)
@@ -301,11 +307,42 @@ This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (global-set-key (kbd "C-c ,,") 'helm-projectile)
 
+  ;; latex
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
+
   ;; ocaml shortcuts
   (require 'ocp-indent)
   (global-set-key (kbd "C-x C-;") 'comment-indent)
   (global-set-key (kbd "C-x C-,") 'comment-region)
   (global-set-key (kbd "C-x C-i") 'ocp-indent-line)
+
+  ;; Indent `=' like a standard keyword.
+  (setq tuareg-lazy-= t)
+  ;; Indent [({ like standard keywords.
+  (setq tuareg-lazy-paren t)
+  ;; No indentation after `in' keywords.
+  (setq tuareg-in-indent 4)
+
+  (add-hook 'tuareg-mode-hook
+            ;; Turn on auto-fill minor mode.
+            (lambda () (auto-fill-mode 1)))
+
+  (add-hook 'tuareg-mode-hook
+            (function (lambda ()
+                        (setq tuareg-begin-indent 4)
+                        (setq tuareg-class-indent 4)
+                        (setq tuareg-default-indent 4)
+                        (setq tuareg-do-indent 4)
+                        (setq tuareg-for-while-indent 4)
+                        (setq tuareg-fun-indent 4)
+                        (setq tuareg-if-then-else-indent 4)
+                        (setq tuareg-let-indent 4)
+                        (setq tuareg-match-indent 4)
+                        (setq tuareg-method-indent 4)
+                        (setq tuareg-pipe-extra-unindent 4)
+                        (setq tuareg-sig-struct-indent 4)
+                        (setq tuareg-try-indent 4)
+                        (setq tuareg-val-indent 4))))
 
   ;;for auto complete
   (global-auto-complete-mode t)
