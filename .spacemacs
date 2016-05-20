@@ -270,7 +270,15 @@ in `dotspacemacs/user-config'."
                (shell-command-to-string "agda-mode locate")))
 
   ;; rainbow identifier
+  (add-hook 'coq-mode-hook #'company-coq-mode)
   (add-hook 'coq-mode-hook 'rainbow-identifiers-mode)
+  (add-hook 'coq-mode-hook (lambda ()
+                             (setq-local prettify-symbols-alist
+                                         '(("&&" . ?∧)
+                                           ("||" . ?∨)
+                                           ("Proof." . ?∵)
+                                           ("Qed." . ?■)
+                                           (":=" . ?≜)))))
 
   ;; bind expand region shortcuts
   (global-set-key [(meta up)] 'er/expand-region)
