@@ -24,12 +24,19 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      (auto-completion :variables
+                      auto-completion-return-key-behavior 'complete
+                      auto-completion-tab-key-behavior 'cycle
+                      auto-completion-complete-with-key-sequence nil
+                      auto-completion-complete-with-key-sequence-delay 0.1
+                      auto-completion-private-snippets-directory nil
                       auto-completion-enable-snippets-in-popup t)
      ;; better-defaults
      emacs-lisp
      git
      markdown
-     (colors :variables colors-enable-rainbow-identifiers t)
+     (colors :variables
+             colors-enable-rainbow-identifiers t
+             colors-enable-nyan-cat-progress-bar (display-graphic-p))
      osx
      ;; org
      ;; (shell :variables
@@ -38,7 +45,9 @@ values."
      spell-checking
      syntax-checking
      version-control
+     rust
      haskell
+     clojure
      ocaml
      agda
      idris
@@ -307,7 +316,9 @@ in `dotspacemacs/user-config'."
   (global-set-key (kbd "C-c r") (lambda ()
                                   (interactive)
                                   (revert-buffer t t t)
-                                  (message "buffer is reverted"))))
+                                  (message "buffer is reverted")))
+  ;; for rust
+  (setq-default rust-enable-racer t))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
