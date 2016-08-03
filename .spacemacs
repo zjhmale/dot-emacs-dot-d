@@ -47,6 +47,7 @@ values."
      version-control
      rust
      haskell
+     racket
      clojure
      ocaml
      agda
@@ -318,7 +319,10 @@ in `dotspacemacs/user-config'."
                                   (revert-buffer t t t)
                                   (message "buffer is reverted")))
   ;; for rust
-  (setq-default rust-enable-racer t))
+  (setq-default rust-enable-racer t)
+
+  ;; for racket
+  (setq auto-mode-alist (cons '("\\.rkt$" . lisp-mode) auto-mode-alist)))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
