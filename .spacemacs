@@ -55,6 +55,7 @@ values."
      idris
      coq
      latex
+     ;;javascript
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -377,7 +378,10 @@ layers configuration. You are free to put any user code."
   (setq ac-auto-start 1)
   (setq ac-quick-help-delay 0.05)
   (setq ac-auto-show-menu 0)
-  (setq ac-auto-start 1))
+  (setq ac-auto-start 1)
+
+  ;;for js
+  (setq js-indent-level 2))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
